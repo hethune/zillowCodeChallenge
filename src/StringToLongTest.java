@@ -45,6 +45,20 @@ public class StringToLongTest {
         } catch (IllegalArgumentException e) {
         }
 
+        try {
+            s = "-1..1";
+            stringToLong.stringToLong(s);
+            fail("Empty Input case not passed");
+        } catch (IllegalArgumentException e) {
+        }
+
+        try {
+            s = "-1.1a";
+            stringToLong.stringToLong(s);
+            fail("Empty Input case not passed");
+        } catch (IllegalArgumentException e) {
+        }
+
         // test longs
         s = "1234";
         assertEquals(stringToLong.stringToLong(s), 1234L);
@@ -57,6 +71,10 @@ public class StringToLongTest {
 
         s= "9223372036854775807";
         assertEquals(stringToLong.stringToLong(s),9223372036854775807L);
+
+        // test doubles
+        s = "123.678";
+        assertEquals(stringToLong.stringToLong(s),123L);
 
 
         // test overflows
